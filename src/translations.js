@@ -109,13 +109,6 @@ const translations = {
     gallery: {
       title: 'Galeri SkyAccess',
       subtitle: 'Bukti nyata konektivitas SkyAccess yang menjangkau seluruh pelosok Nusantara.',
-      filters: {
-        all: 'Semua',
-        village: 'Pedesaan',
-        coastal: 'Pesisir',
-        business: 'Bisnis',
-        public: 'Layanan Publik'
-      },
       ctaTitle: 'Jadilah Bagian dari Cerita Sukses Kami',
       ctaBtn: 'Konsultasi Sekarang'
     }
@@ -224,13 +217,6 @@ const translations = {
     gallery: {
       title: 'SkyAccess Gallery',
       subtitle: 'Real evidence of SkyAccess connectivity reaching all corners of the Archipelago.',
-      filters: {
-        all: 'All',
-        village: 'Villages',
-        coastal: 'Coastal',
-        business: 'Business',
-        public: 'Public Services'
-      },
       ctaTitle: 'Be Part of Our Success Story',
       ctaBtn: 'Consult Now'
     }

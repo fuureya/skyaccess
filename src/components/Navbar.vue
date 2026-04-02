@@ -47,14 +47,14 @@ onUnmounted(() => {
           <span>{{ currentLocale.toUpperCase() }}</span>
         </button>
 
-        <a href="https://wa.me/628114499096" target="_blank" class="contact-email">
-          <i class="fab fa-whatsapp"></i>
-          <span class="phone-text">08114499096</span>
-        </a>
-
         <a href="mailto:noc@shangtel.co.id" class="contact-item-nav">
           <i class="fas fa-envelope"></i>
           <span class="email-text">noc@shangtel.co.id</span>
+        </a>
+
+        <a href="https://wa.me/628114499096" target="_blank" class="contact-email">
+          <i class="fab fa-whatsapp"></i>
+          <span class="phone-text">08114499096</span>
         </a>
         <button class="menu-toggle" @click="toggleMenu" :class="{ 'active': isMenuOpen }">
           <span class="bar"></span>

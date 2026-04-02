@@ -17,10 +17,14 @@ const { t } = useI18n();
           {{ t('hero.subheadline') }}
         </p>
         
-        <div class="cta-group">
-          <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary">{{ t('hero.cta1') }} <i class="fab fa-whatsapp"></i></a>
-          <button class="btn btn-outline">{{ t('hero.cta2') }}</button>
-        </div>
+        <div class="hero-btns">
+        <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary btn-lg">
+          {{ t('hero.cta1') }} <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#packages" class="btn btn-outline btn-lg">
+          {{ t('hero.cta2') }}
+        </a>
+      </div>
 
         <div class="hero-stats">
           <div class="stat-item">

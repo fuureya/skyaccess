@@ -51,33 +51,10 @@ const translations = {
       ctaBtn: 'Konsultasi Gratis'
     },
     packages: {
-      badge: 'Paket Layanan',
-      title: 'Pilih Paket yang Sesuai dengan Kebutuhan Anda',
-      subtitle: 'Solusi internet satelit fleksibel untuk berbagai sektor dan skala bisnis.',
-      cta: 'Pesan Sekarang',
-      list: [
-        {
-          name: 'Paket Bronze',
-          speed: '5 Mbps',
-          price: 'Mulai dari Rp. X.XXX.XXX',
-          features: ['Unlimited Quota', 'Basic Support', 'Free Installation*', 'Home & Personal'],
-          isPopular: false
-        },
-        {
-          name: 'Paket Silver',
-          speed: '10 Mbps',
-          price: 'Mulai dari Rp. X.XXX.XXX',
-          features: ['Unlimited Quota', 'Priority Support', 'Public IP (Static)', 'Small & Medium Business'],
-          isPopular: true
-        },
-        {
-          name: 'Paket Gold',
-          speed: '20 Mbps',
-          price: 'Mulai dari Rp. X.XXX.XXX',
-          features: ['Dedicated Link', '24/7 Premium Support', 'SLA 99.5%', 'Enterprise & Government'],
-          isPopular: false
-        }
-      ]
+      badge: 'Solusi Bisnis',
+      title: 'Komunikasikan kebutuhan bisnis mu',
+      desc: 'Tim ahli kami siap memberikan solusi VSAT kustom yang paling efisien untuk mendukung operasional bisnis Anda di mana saja.',
+      cta: 'Hubungi Ahli Kami (WhatsApp)'
     },
     footer: {
       tagline: 'TV di setiap layar Anda dengan internet tercepat',
@@ -133,33 +110,10 @@ const translations = {
       ctaBtn: 'Free Consultation'
     },
     packages: {
-      badge: 'Service Packages',
-      title: 'Choose the Plan that Fits Your Needs',
-      subtitle: 'Flexible satellite internet solutions for various sectors and business scales.',
-      cta: 'Order Now',
-      list: [
-        {
-          name: 'Bronze Plan',
-          speed: '5 Mbps',
-          price: 'Starting from Rp. X.XXX.XXX',
-          features: ['Unlimited Quota', 'Basic Support', 'Free Installation*', 'Home & Personal'],
-          isPopular: false
-        },
-        {
-          name: 'Silver Plan',
-          speed: '10 Mbps',
-          price: 'Starting from Rp. X.XXX.XXX',
-          features: ['Unlimited Quota', 'Priority Support', 'Public IP (Static)', 'Small & Medium Business'],
-          isPopular: true
-        },
-        {
-          name: 'Gold Plan',
-          speed: '20 Mbps',
-          price: 'Starting from Rp. X.XXX.XXX',
-          features: ['Dedicated Link', '24/7 Premium Support', 'SLA 99.5%', 'Enterprise & Government'],
-          isPopular: false
-        }
-      ]
+      badge: 'Business Solution',
+      title: 'Communicate your business needs',
+      desc: 'Our team of experts is ready to provide the most efficient custom VSAT solutions to support your business operations anywhere.',
+      cta: 'Contact Our Expert (WhatsApp)'
     },
     footer: {
       tagline: 'TV on your every screen with the fastest internet',

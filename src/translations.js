@@ -75,6 +75,20 @@ const translations = {
         { name: "Diskominfo Raja Ampat", role: "Pemerintah Daerah", text: "Konektivitas di wilayah kepulauan bukan lagi hambatan berkat solusi satelit dari SkyAccess." },
         { name: "Diskominfo Timika", role: "Pemerintah Daerah", text: "Kualitas sinyal yang sangat baik bahkan di cuaca ekstrem sekalipun. Sangat direkomendasikan." }
       ]
+    },
+    about: {
+      title: 'Solusi Konektivitas Bisnis',
+      subtitle: 'Menghubungkan operasional bisnis Anda di mana pun, kapan pun tanpa batas infrastruktur.',
+      focusTitle: 'Solusi Strategis untuk Area Terpencil',
+      focusText: 'SkyAccess bukan sekadar penyedia internet. Kami adalah mitra strategis bagi bisnis yang beroperasi di wilayah dengan tantangan infrastruktur tinggi. Dengan teknologi VSAT, kami menjamin kelancaran operasional mulai dari sektor pertambangan, perhotelan, hingga instansi pemerintahan di seluruh pelosok nusantara.',
+      factors: [
+        { title: 'Reliabilitas Tinggi (High Uptime)', desc: 'Jaminan koneksi stabil dengan SLA yang kompetitif untuk mendukung aplikasi bisnis krusial Anda.' },
+        { title: 'Implementasi Cepat & Mandiri', desc: 'Instalasi ringkas tanpa ketergantungan pada kabel darat. Bisnis Anda online dalam hitungan hari.' },
+        { title: 'Keamanan & Privasi Data', desc: 'Jaringan satelit terenkripsi yang memastikan data perusahaan Anda tetap aman selama transmisi.' },
+        { title: 'Dukungan Teknis Prioritas', desc: 'Tim ahli yang siap siaga 24/7 memberikan solusi cepat untuk setiap tantangan bisnis Anda.' }
+      ],
+      ctaTitle: 'Konsultasikan Kebutuhan Infrastruktur Digital Anda',
+      ctaBtn: 'Hubungi Specialist Kami (WhatsApp)'
     }
   },
   en: {
@@ -147,6 +161,20 @@ const translations = {
         { name: "Diskominfo Raja Ampat", role: "Local Government", text: "Connectivity in island regions is no longer a barrier thanks to SkyAccess satellite solutions." },
         { name: "Diskominfo Timika", role: "Local Government", text: "Excellent signal quality even in extreme weather conditions. Highly recommended." }
       ]
+    },
+    about: {
+      title: 'Business Connectivity Solutions',
+      subtitle: 'Connecting your business operations anywhere, anytime without infrastructure limits.',
+      focusTitle: 'Strategic Solutions for Remote Areas',
+      focusText: 'SkyAccess is more than just an internet provider. We are a strategic partner for businesses operating in areas with high infrastructure challenges. With VSAT technology, we ensure smooth operations ranging from mining and hospitality to government agencies throughout the archipelago.',
+      factors: [
+        { title: 'High Reliability (Uptime)', desc: 'Guaranteed stable connection with competitive SLAs to support your crucial business applications.' },
+        { title: 'Fast & Independent Deployment', desc: 'Concise installation without dependence on land cables. Your business is online in days.' },
+        { title: 'Data Security & Privacy', desc: 'Encrypted satellite network ensuring your company data remains secure during transmission.' },
+        { title: 'Priority Technical Support', desc: 'Expert team on standby 24/7 providing quick solutions for every business challenge.' }
+      ],
+      ctaTitle: 'Consult Your Digital Infrastructure Needs',
+      ctaBtn: 'Contact Our Specialist (WhatsApp)'
     }
   }
 };

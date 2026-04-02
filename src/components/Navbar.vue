@@ -47,7 +47,12 @@ onUnmounted(() => {
           <span>{{ currentLocale.toUpperCase() }}</span>
         </button>
 
-        <a href="mailto:noc@shangtel.co.id" class="contact-email">
+        <a href="https://wa.me/628114499096" target="_blank" class="contact-email">
+          <i class="fab fa-whatsapp"></i>
+          <span class="phone-text">08114499096</span>
+        </a>
+
+        <a href="mailto:noc@shangtel.co.id" class="contact-item-nav">
           <i class="fas fa-envelope"></i>
           <span class="email-text">noc@shangtel.co.id</span>
         </a>
@@ -182,6 +187,20 @@ onUnmounted(() => {
   background: rgba(14, 165, 233, 0.1);
 }
 
+.contact-item-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.contact-item-nav:hover {
+  color: var(--primary);
+}
+
 .contact-email {
   display: flex;
   align-items: center;
@@ -217,8 +236,14 @@ onUnmounted(() => {
 }
 
 /* Mobile Menu */
+@media (max-width: 1200px) {
+  .phone-text, .email-text {
+    display: none;
+  }
+}
+
 @media (max-width: 991px) {
-  .nav-links, .email-text, .nav-actions > .lang-switcher {
+  .nav-links, .nav-actions > .contact-item-nav, .nav-actions > .contact-email, .nav-actions > .lang-switcher {
     display: none;
   }
 

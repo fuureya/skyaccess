@@ -30,8 +30,8 @@ const { t } = useI18n();
           <h3>{{ t('info.cta') }}</h3>
           <p>{{ t('hero.subheadline') }}</p>
         </div>
-        <a href="mailto:noc@shangtel.co.id" class="btn btn-primary">
-          {{ t('info.ctaBtn') }} <i class="fas fa-comment-dots"></i>
+        <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary">
+          {{ t('info.ctaBtn') }} <i class="fab fa-whatsapp"></i>
         </a>
       </div>
     </section>

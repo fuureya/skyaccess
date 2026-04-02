@@ -43,9 +43,9 @@ const { t } = useI18n();
             <i class="fas fa-envelope"></i>
             <span>noc@shangtel.co.id</span>
           </a>
-          <a href="tel:0411586975" class="contact-item">
-            <i class="fas fa-phone"></i>
-            <span>0411 586975</span>
+          <a href="https://wa.me/628114499096" target="_blank" class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>08114499096</span>
           </a>
         </div>
       </div>
@@ -54,7 +54,7 @@ const { t } = useI18n();
     <!-- Copyright -->
     <div class="footer-bottom">
       <div class="container copyright-wrapper">
-        <p class="copyright">{{ t('footer.copyright') }}</p>
+        <p class="copyright">{{ t('footer.copyright').replace('{year}', new Date().getFullYear()) }}</p>
         <div class="footer-accent-line"></div>
       </div>
     </div>

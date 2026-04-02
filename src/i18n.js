@@ -55,7 +55,7 @@ const translations = {
       links: 'Tautan',
       meetUs: 'Temui Kami',
       contact: 'Kontak',
-      copyright: 'Hak Cipta © 2023. SKYACCESS. Seluruh Hak Cipta Dilindungi.'
+      copyright: 'Hak Cipta © {year}. SKYACCESS. Seluruh Hak Cipta Dilindungi.'
     }
   },
   en: {
@@ -108,7 +108,7 @@ const translations = {
       links: 'Links',
       meetUs: 'Meet Us',
       contact: 'Contact',
-      copyright: 'Copyright © 2023. SKYACCESS. All Rights Reserved.'
+      copyright: 'Copyright © {year}. SKYACCESS. All Rights Reserved.'
     }
   }
 };

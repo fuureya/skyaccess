@@ -40,7 +40,7 @@ onUnmounted(() => {
       <!-- Contact Info & Action -->
       <div class="nav-actions">
         <a href="mailto:noc@shangtel.co.id" class="contact-email">
-          <span class="email-icon">📧</span>
+          <i class="fas fa-envelope"></i>
           <span class="email-text">noc@shangtel.co.id</span>
         </a>
         <button class="menu-toggle" @click="toggleMenu" :class="{ 'active': isMenuOpen }">
@@ -61,7 +61,7 @@ onUnmounted(() => {
           <li><router-link to="/contact" class="mobile-link" @click="toggleMenu">Contact</router-link></li>
           <li class="mobile-contact">
             <a href="mailto:noc@shangtel.co.id" class="contact-email">
-              <span class="email-icon">📧</span>
+              <i class="fas fa-envelope"></i>
               <span>noc@shangtel.co.id</span>
             </a>
           </li>

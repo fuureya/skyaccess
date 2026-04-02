@@ -1,42 +1,55 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from '../translations';
 const { t } = useI18n();
+
+const currentSlide = ref(0);
+const slides = [
+  { url: '/src/assets/img/hero-slide-1.png', alt: 'VSAT on Mountain' },
+  { url: '/src/assets/img/hero-slide-2.png', alt: 'VSAT for Communities' },
+  { url: '/src/assets/img/hero-slide-3.png', alt: 'Advanced VSAT Tech' }
+];
+
+let timer = null;
+const startSlider = () => {
+  timer = setInterval(() => {
+    currentSlide.value = (currentSlide.value + 1) % slides.length;
+  }, 5000);
+};
+
+onMounted(() => {
+  startSlider();
+});
+
+onUnmounted(() => {
+  if (timer) clearInterval(timer);
+});
 </script>
 
 <template>
   <section class="jumbotron">
-    <div class="jumbotron-bg">
-      <div class="glow-1"></div>
-      <div class="glow-2"></div>
-    </div>
-    
-    <div class="container jumbotron-content">
+    <div class="container hero-content">
       <div class="hero-text">
-        <h1 class="headline" v-html="t('hero.headline')"></h1>
-        <p class="subheadline">
+        <div class="hero-badge">{{ t('hero.cardTag') }}</div>
+        <h1 class="hero-title" v-html="t('hero.headline')"></h1>
+        <p class="hero-subtitle">
           {{ t('hero.subheadline') }}
         </p>
         
         <div class="hero-btns">
-        <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary btn-lg">
-          {{ t('hero.cta1') }} <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="#packages" class="btn btn-outline btn-lg">
-          {{ t('hero.cta2') }}
-        </a>
-      </div>
+          <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary btn-lg">
+            {{ t('hero.cta1') }} <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#packages" class="btn btn-outline btn-lg">
+            {{ t('hero.cta2') }}
+          </a>
+        </div>
 
         <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">100+</span>
-            <span class="stat-label">{{ t('hero.stats.speed') }}</span>
-          </div>
-          <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-value">99.9%</span>
             <span class="stat-label">{{ t('hero.stats.uptime') }}</span>
           </div>
-          <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-value">24/7</span>
             <span class="stat-label">{{ t('hero.stats.support') }}</span>
@@ -44,20 +57,26 @@ const { t } = useI18n();
         </div>
       </div>
 
-      <div class="hero-image-wrapper">
-        <div class="glass-card">
-          <div class="card-header">
-            <div class="card-dots">
-              <span></span><span></span><span></span>
+      <div class="hero-visual">
+        <div class="slider-container glass">
+          <transition-group name="fade">
+            <div 
+              v-for="(slide, index) in slides" 
+              :key="index" 
+              v-show="currentSlide === index"
+              class="slide"
+            >
+              <img :src="slide.url" :alt="slide.alt" class="slide-img" />
             </div>
-          </div>
-          <div class="card-body">
-            <div class="speed-meter">
-              <div class="meter-ring"></div>
-              <div class="speed-value">VSAT</div>
-              <div class="speed-unit">Satellite Tech</div>
-            </div>
-            <p class="card-tag">{{ t('hero.cardTag') }}</p>
+          </transition-group>
+          <div class="slider-dots">
+            <span 
+              v-for="(_, index) in slides" 
+              :key="index" 
+              :class="{ active: currentSlide === index }"
+              class="dot"
+              @click="currentSlide = index"
+            ></span>
           </div>
         </div>
       </div>
@@ -67,122 +86,63 @@ const { t } = useI18n();
 
 <style scoped>
 .jumbotron {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding-top: 80px; /* Offset for fixed navbar */
-  background: #020617;
+  padding: 10rem 0 6rem;
+  background: radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
 }
 
-.jumbotron-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.glow-1 {
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
-  filter: blur(60px);
-}
-
-.glow-2 {
-  position: absolute;
-  bottom: -10%;
-  left: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
-  filter: blur(80px);
-}
-
-.jumbotron-content {
-  position: relative;
-  z-index: 2;
+.hero-content {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 4rem;
+  align-items: center;
 }
 
-.headline {
-  font-size: 4rem;
+.hero-badge {
+  display: inline-block;
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-size: 4.5rem;
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
   color: #fff;
+  line-height: 1.1;
+  margin-bottom: 2rem;
 }
 
-.accent {
-  background: linear-gradient(to right, #0ea5e9, #38bdf8);
+.hero-title :deep(.accent) {
+  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #38bdf8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.subheadline {
-  font-size: 1.2rem;
+.hero-subtitle {
+  font-size: 1.25rem;
   color: var(--text-muted);
   max-width: 600px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   line-height: 1.6;
 }
 
-.cta-group {
+.hero-btns {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 4rem;
 }
 
-.btn {
-  padding: 0.9rem 2rem;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
-}
-
-.btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(14, 165, 233, 0.3);
-}
-
-.btn-outline {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-3px);
-}
-
 .hero-stats {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .stat-item {
@@ -191,88 +151,70 @@ const { t } = useI18n();
 }
 
 .stat-value {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 800;
   color: #fff;
 }
 
 .stat-label {
-  font-size: 0.85rem;
   color: var(--text-muted);
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.stat-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Jumbotron Graphic */
-.hero-image-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.glass-card {
-  width: 320px;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 1.5rem;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
-  animation: float 6s ease-in-out infinite;
-}
-
-.card-header {
-  margin-bottom: 2rem;
-}
-
-.card-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.card-dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.speed-meter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Slider System */
+.hero-visual {
   position: relative;
-  padding-bottom: 2rem;
+  z-index: 2;
 }
 
-.meter-ring {
-  width: 180px;
-  height: 180px;
-  border: 4px solid rgba(14, 165, 233, 0.1);
-  border-top-color: var(--primary);
-  border-radius: 50%;
+.slider-container {
+  width: 100%;
+  aspect-ratio: 1.2 / 1;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.slide {
   position: absolute;
-  top: -10px;
-  animation: rotate 3s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.speed-value {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #fff;
-  margin-top: 1.5rem;
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 6s ease-out;
 }
 
-.speed-unit {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-top: -5px;
+.slide[style*="display: none"] .slide-img {
+  transform: scale(1.1);
+}
+
+.slide:not([style*="display: none"]) .slide-img {
+  transform: scale(1);
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .card-tag {

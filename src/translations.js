@@ -111,6 +111,18 @@ const translations = {
       subtitle: 'Bukti nyata konektivitas SkyAccess yang menjangkau seluruh pelosok Nusantara.',
       ctaTitle: 'Jadilah Bagian dari Cerita Sukses Kami',
       ctaBtn: 'Konsultasi Sekarang'
+    },
+    contact: {
+      title: 'Hubungi Kami',
+      subtitle: 'Siap membantu kebutuhan konektivitas Anda kapan pun dan di mana pun.',
+      office: 'Kantor Operasional',
+      address: 'Jl. Keindahan 1 Blok AA No.4, Tamalanrea - Makassar, Sulawesi - Indonesia',
+      emailTitle: 'Email Dukungan',
+      phoneTitle: 'Nomor Telepon',
+      socialTitle: 'Media Sosial',
+      mapTitle: 'Lokasi Kami di Makassar',
+      ctaTitle: 'Butuh Solusi Cepat? Chat Specialist Kami',
+      ctaBtn: 'Mulai Chat WhatsApp'
     }
   },
   en: {
@@ -219,6 +231,18 @@ const translations = {
       subtitle: 'Real evidence of SkyAccess connectivity reaching all corners of the Archipelago.',
       ctaTitle: 'Be Part of Our Success Story',
       ctaBtn: 'Consult Now'
+    },
+    contact: {
+      title: 'Contact Us',
+      subtitle: 'Ready to help your connectivity needs anytime and anywhere.',
+      office: 'Operational Office',
+      address: 'Jl. Keindahan 1 Blok AA No.4, Tamalanrea - Makassar, Sulawesi - Indonesia',
+      emailTitle: 'Support Email',
+      phoneTitle: 'Phone Number',
+      socialTitle: 'Social Media',
+      mapTitle: 'Our Location in Makassar',
+      ctaTitle: 'Need a Fast Solution? Chat with Our Specialist',
+      ctaBtn: 'Start WhatsApp Chat'
     }
   }
 };

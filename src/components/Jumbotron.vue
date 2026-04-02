@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from '../i18n';
+const { t } = useI18n();
 </script>
 
 <template>
@@ -10,33 +12,30 @@
     
     <div class="container jumbotron-content">
       <div class="hero-text">
-        <h1 class="headline">
-          Fastest Internet for Your <span class="accent">Digital Lifestyle</span>
-        </h1>
+        <h1 class="headline" v-html="t('hero.headline')"></h1>
         <p class="subheadline">
-          Experience seamless connectivity and lightning-fast speeds with SkyAccess. 
-          We bring high-speed fiber internet and premium entertainment directly to your screens.
+          {{ t('hero.subheadline') }}
         </p>
         
         <div class="cta-group">
-          <button class="btn btn-primary">Get Started <i class="fas fa-arrow-right"></i></button>
-          <button class="btn btn-outline">Our Packages</button>
+          <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary">{{ t('hero.cta1') }} <i class="fab fa-whatsapp"></i></a>
+          <button class="btn btn-outline">{{ t('hero.cta2') }}</button>
         </div>
 
         <div class="hero-stats">
           <div class="stat-item">
             <span class="stat-value">100+</span>
-            <span class="stat-label">Mbps Speed</span>
+            <span class="stat-label">{{ t('hero.stats.speed') }}</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-value">99.9%</span>
-            <span class="stat-label">Uptime</span>
+            <span class="stat-label">{{ t('hero.stats.uptime') }}</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-value">24/7</span>
-            <span class="stat-label">Support</span>
+            <span class="stat-label">{{ t('hero.stats.support') }}</span>
           </div>
         </div>
       </div>
@@ -51,10 +50,10 @@
           <div class="card-body">
             <div class="speed-meter">
               <div class="meter-ring"></div>
-              <div class="speed-value">150</div>
-              <div class="speed-unit">Mbps</div>
+              <div class="speed-value">VSAT</div>
+              <div class="speed-unit">Satellite Tech</div>
             </div>
-            <p class="card-tag">Ultrafast Connection</p>
+            <p class="card-tag">{{ t('hero.cardTag') }}</p>
           </div>
         </div>
       </div>

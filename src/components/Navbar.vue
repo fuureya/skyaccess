@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useI18n } from '../i18n';
 
+const { t, toggleLocale, currentLocale } = useI18n();
 const isMenuOpen = ref(false);
 const isScrolled = ref(false);
 
@@ -31,14 +33,20 @@ onUnmounted(() => {
 
       <!-- Desktop Menu -->
       <ul class="nav-links">
-        <li><router-link to="/" class="nav-link">Home</router-link></li>
-        <li><router-link to="/about" class="nav-link">About</router-link></li>
-        <li><router-link to="/gallery" class="nav-link">Gallery</router-link></li>
-        <li><router-link to="/contact" class="nav-link">Contact</router-link></li>
+        <li><router-link to="/" class="nav-link">{{ t('nav.home') }}</router-link></li>
+        <li><router-link to="/about" class="nav-link">{{ t('nav.about') }}</router-link></li>
+        <li><router-link to="/gallery" class="nav-link">{{ t('nav.gallery') }}</router-link></li>
+        <li><router-link to="/contact" class="nav-link">{{ t('nav.contact') }}</router-link></li>
       </ul>
 
       <!-- Contact Info & Action -->
       <div class="nav-actions">
+        <!-- Language Switcher -->
+        <button class="lang-switcher" @click="toggleLocale">
+          <i class="fas fa-globe"></i>
+          <span>{{ currentLocale.toUpperCase() }}</span>
+        </button>
+
         <a href="mailto:noc@shangtel.co.id" class="contact-email">
           <i class="fas fa-envelope"></i>
           <span class="email-text">noc@shangtel.co.id</span>
@@ -55,10 +63,16 @@ onUnmounted(() => {
     <transition name="mobile-menu">
       <div v-if="isMenuOpen" class="mobile-menu glass">
         <ul class="mobile-links">
-          <li><router-link to="/" class="mobile-link" @click="toggleMenu">Home</router-link></li>
-          <li><router-link to="/about" class="mobile-link" @click="toggleMenu">About</router-link></li>
-          <li><router-link to="/gallery" class="mobile-link" @click="toggleMenu">Gallery</router-link></li>
-          <li><router-link to="/contact" class="mobile-link" @click="toggleMenu">Contact</router-link></li>
+          <li><router-link to="/" class="mobile-link" @click="toggleMenu">{{ t('nav.home') }}</router-link></li>
+          <li><router-link to="/about" class="mobile-link" @click="toggleMenu">{{ t('nav.about') }}</router-link></li>
+          <li><router-link to="/gallery" class="mobile-link" @click="toggleMenu">{{ t('nav.gallery') }}</router-link></li>
+          <li><router-link to="/contact" class="mobile-link" @click="toggleMenu">{{ t('nav.contact') }}</router-link></li>
+          <li class="mobile-lang">
+            <button class="lang-switcher" @click="toggleLocale">
+              <i class="fas fa-globe"></i>
+              <span>{{ currentLocale.toUpperCase() }}</span>
+            </button>
+          </li>
           <li class="mobile-contact">
             <a href="mailto:noc@shangtel.co.id" class="contact-email">
               <i class="fas fa-envelope"></i>
@@ -150,6 +164,24 @@ onUnmounted(() => {
   gap: 1.5rem;
 }
 
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.lang-switcher:hover {
+  color: var(--primary);
+  background: rgba(14, 165, 233, 0.1);
+}
+
 .contact-email {
   display: flex;
   align-items: center;
@@ -186,7 +218,7 @@ onUnmounted(() => {
 
 /* Mobile Menu */
 @media (max-width: 991px) {
-  .nav-links, .email-text {
+  .nav-links, .email-text, .nav-actions > .lang-switcher {
     display: none;
   }
 
@@ -229,6 +261,10 @@ onUnmounted(() => {
   .mobile-link {
     font-size: 1.5rem;
     font-weight: 600;
+  }
+
+  .mobile-lang {
+    margin-top: 1rem;
   }
 
   .mobile-contact {

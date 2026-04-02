@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from '../i18n';
+const { t } = useI18n();
 </script>
 
 <template>
@@ -9,23 +11,23 @@
         <div class="footer-logo">
           <img src="../assets/img/logo-skyaccess.png" alt="SkyAccess Logo" class="footer-logo-img" />
         </div>
-        <p class="tagline">TV on your every screen with the so fastest internet</p>
+        <p class="tagline">{{ t('footer.tagline') }}</p>
       </div>
 
       <!-- Quick Links -->
       <div class="footer-section">
-        <h4 class="footer-title">Links</h4>
+        <h4 class="footer-title">{{ t('footer.links') }}</h4>
         <ul class="footer-links">
-          <li><router-link to="/about"><i class="fas fa-chevron-right"></i> About</router-link></li>
-          <li><router-link to="/contact"><i class="fas fa-chevron-right"></i> Contact</router-link></li>
-          <li><router-link to="/packages"><i class="fas fa-chevron-right"></i> Our Packages</router-link></li>
+          <li><router-link to="/about"><i class="fas fa-chevron-right"></i> {{ t('nav.about') }}</router-link></li>
+          <li><router-link to="/contact"><i class="fas fa-chevron-right"></i> {{ t('nav.contact') }}</router-link></li>
+          <li><router-link to="/packages"><i class="fas fa-chevron-right"></i> Packages</router-link></li>
           <li><router-link to="/services"><i class="fas fa-chevron-right"></i> Services</router-link></li>
         </ul>
       </div>
 
       <!-- Meet Us -->
       <div class="footer-section">
-        <h4 class="footer-title">Meet us</h4>
+        <h4 class="footer-title">{{ t('footer.meetUs') }}</h4>
         <div class="address">
           <p><i class="fas fa-map-marker-alt"></i> Jl. Keindahan 1 Blok AA No.4</p>
           <p>Tamalanrea - Makassar</p>
@@ -35,7 +37,7 @@
 
       <!-- Contact -->
       <div class="footer-section">
-        <h4 class="footer-title">Contact</h4>
+        <h4 class="footer-title">{{ t('footer.contact') }}</h4>
         <div class="contact-details">
           <a href="mailto:noc@shangtel.co.id" class="contact-item">
             <i class="fas fa-envelope"></i>
@@ -52,7 +54,7 @@
     <!-- Copyright -->
     <div class="footer-bottom">
       <div class="container copyright-wrapper">
-        <p class="copyright">Copyright © 2023. <span class="brand-name">SKYACCESS</span>. All Rights Reserved.</p>
+        <p class="copyright">{{ t('footer.copyright') }}</p>
         <div class="footer-accent-line"></div>
       </div>
     </div>

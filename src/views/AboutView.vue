@@ -1,6 +1,11 @@
 <script setup>
 import { useI18n } from '../translations';
 const { t } = useI18n();
+
+// Helper to get image path
+const getImg = (name) => {
+  return new URL(`../assets/img/${name}`, import.meta.url).href;
+};
 </script>
 
 <template>
@@ -14,39 +19,35 @@ const { t } = useI18n();
       </div>
     </header>
 
-    <!-- Strategy Section -->
-    <section class="strategy-section">
+    <!-- Unified Strategy Intro -->
+    <section class="strategy-intro">
       <div class="container">
-        <div class="strategy-content glass">
-          <div class="strategy-text">
-            <h2 class="section-title">{{ t('about.focusTitle') }}</h2>
-            <p>{{ t('about.focusText') }}</p>
-          </div>
-          <div class="strategy-visual">
-            <div class="pulse-ring"></div>
-            <i class="fas fa-network-wired strategy-icon"></i>
-          </div>
+        <div class="intro-card glass">
+          <h2 class="section-title">{{ t('about.focusTitle') }}</h2>
+          <p class="intro-description">{{ t('about.focusText') }}</p>
         </div>
       </div>
     </section>
 
-    <!-- Informative Factors -->
-    <section class="factors-section">
-      <div class="container">
-        <div class="factors-grid">
-          <div 
-            v-for="(factor, index) in t('about.factors')" 
-            :key="index" 
-            class="factor-card glass"
-          >
-            <div class="factor-icon">
-              <i v-if="index === 0" class="fas fa-clock-rotate-left"></i>
-              <i v-if="index === 1" class="fas fa-truck-fast"></i>
-              <i v-if="index === 2" class="fas fa-vault"></i>
-              <i v-if="index === 3" class="fas fa-headset"></i>
+    <!-- Alternating Detailed Sections -->
+    <section class="solution-sections">
+      <div 
+        v-for="(factor, index) in t('about.factors')" 
+        :key="index" 
+        class="solution-section"
+        :class="{ 'reverse': index % 2 !== 0 }"
+      >
+        <div class="container section-grid">
+          <div class="section-content">
+            <div class="section-number">0{{ index + 1 }}</div>
+            <h2 class="section-heading">{{ factor.title }}</h2>
+            <p class="section-description">{{ factor.desc }}</p>
+          </div>
+          <div class="section-media">
+            <div class="image-wrapper glass">
+              <img :src="getImg(factor.img)" :alt="factor.title" class="solution-img" />
+              <div class="img-overlay"></div>
             </div>
-            <h3 class="factor-title">{{ factor.title }}</h3>
-            <p class="factor-desc">{{ factor.desc }}</p>
           </div>
         </div>
       </div>
@@ -57,8 +58,8 @@ const { t } = useI18n();
       <div class="container">
         <div class="cta-card glass">
           <div class="cta-glow"></div>
-          <h2>{{ t('about.ctaTitle') }}</h2>
-          <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary btn-lg">
+          <h2 class="cta-heading">{{ t('about.ctaTitle') }}</h2>
+          <a href="https://wa.me/628114499096" target="_blank" class="btn btn-primary btn-lg pulse-glow">
             {{ t('about.ctaBtn') }} <i class="fab fa-whatsapp"></i>
           </a>
         </div>
@@ -69,7 +70,7 @@ const { t } = useI18n();
 
 <style scoped>
 .about-view {
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 
 .about-hero {
@@ -107,104 +108,125 @@ const { t } = useI18n();
   line-height: 1.6;
 }
 
-.strategy-section {
-  padding: 6rem 0;
+.strategy-intro {
+  padding: 4rem 0;
 }
 
-.strategy-content {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
-  padding: 5rem;
-  border-radius: 48px;
-  align-items: center;
+.intro-card {
+  padding: 4rem;
+  border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.section-title {
-  font-size: 2.8rem;
+.intro-description {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Alternating Sections */
+.solution-sections {
+  padding: 4rem 0;
+}
+
+.solution-section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.solution-section.reverse .section-grid {
+  direction: rtl;
+}
+
+.solution-section.reverse .section-content {
+  direction: ltr;
+}
+
+.section-number {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  display: block;
+  letter-spacing: -2px;
+}
+
+.section-heading {
+  font-size: 3.2rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
   line-height: 1.2;
+  position: relative;
 }
 
-.strategy-text p {
-  font-size: 1.25rem;
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.solution-section.reverse .section-heading::after {
+  left: auto;
+  right: 0;
+}
+
+.section-description {
+  font-size: 1.2rem;
   color: var(--text-muted);
   line-height: 1.8;
 }
 
-.strategy-visual {
+.image-wrapper {
+  border-radius: 40px;
+  overflow: hidden;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.strategy-icon {
-  font-size: 8rem;
-  color: var(--primary);
-  z-index: 2;
-  filter: drop-shadow(0 0 20px var(--primary));
-}
-
-.pulse-ring {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse-ring 3s infinite;
-}
-
-@keyframes pulse-ring {
-  0% { transform: scale(0.8); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 0.5; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
-
-.factors-section {
-  padding: 6rem 0;
-}
-
-.factors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.factor-card {
-  padding: 3rem 2.5rem;
-  border-radius: 32px;
+  aspect-ratio: 16/10;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s ease;
 }
 
-.factor-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(14, 165, 233, 0.4);
+.solution-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.factor-icon {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 2rem;
+.image-wrapper:hover .solution-img {
+  transform: scale(1.05);
 }
 
-.factor-title {
-  font-size: 1.4rem;
-  color: #fff;
-  margin-bottom: 1rem;
-  font-weight: 700;
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.4));
 }
 
-.factor-desc {
-  color: var(--text-muted);
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
+/* CTA */
 .about-cta {
   padding: 8rem 0;
 }
@@ -216,6 +238,7 @@ const { t } = useI18n();
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
 }
 
 .cta-glow {
@@ -234,7 +257,7 @@ const { t } = useI18n();
   to { transform: rotate(360deg); }
 }
 
-.cta-card h2 {
+.cta-heading {
   font-size: 3rem;
   color: #fff;
   margin-bottom: 3.5rem;
@@ -242,16 +265,14 @@ const { t } = useI18n();
   z-index: 1;
 }
 
-.btn-lg {
-  position: relative;
-  z-index: 1;
-}
-
 @media (max-width: 991px) {
   .hero-title { font-size: 3.5rem; }
-  .strategy-content { padding: 3rem; grid-template-columns: 1fr; text-align: center; }
+  .section-grid { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+  .solution-section.reverse .section-grid { direction: ltr; }
+  .section-heading { font-size: 2.2rem; }
   .cta-card { padding: 4rem 2rem; }
   .cta-card h2 { font-size: 2.2rem; }
+  .section-number { font-size: 3rem; }
 }
 
 @media (max-width: 576px) {

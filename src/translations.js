@@ -82,10 +82,26 @@ const translations = {
       focusTitle: 'Solusi Strategis untuk Area Terpencil',
       focusText: 'SkyAccess bukan sekadar penyedia internet. Kami adalah mitra strategis bagi bisnis yang beroperasi di wilayah dengan tantangan infrastruktur tinggi. Dengan teknologi VSAT, kami menjamin kelancaran operasional mulai dari sektor pertambangan, perhotelan, hingga instansi pemerintahan di seluruh pelosok nusantara.',
       factors: [
-        { title: 'Reliabilitas Tinggi (High Uptime)', desc: 'Jaminan koneksi stabil dengan SLA yang kompetitif untuk mendukung aplikasi bisnis krusial Anda.' },
-        { title: 'Implementasi Cepat & Mandiri', desc: 'Instalasi ringkas tanpa ketergantungan pada kabel darat. Bisnis Anda online dalam hitungan hari.' },
-        { title: 'Keamanan & Privasi Data', desc: 'Jaringan satelit terenkripsi yang memastikan data perusahaan Anda tetap aman selama transmisi.' },
-        { title: 'Dukungan Teknis Prioritas', desc: 'Tim ahli yang siap siaga 24/7 memberikan solusi cepat untuk setiap tantangan bisnis Anda.' }
+        { 
+          title: 'Reliabilitas Tinggi (High Uptime)', 
+          desc: 'Kami menjamin operasional bisnis Anda tetap berjalan tanpa hambatan dengan ketersediaan sinyal hingga 99.9%. Dengan dukungan teknis yang proaktif, setiap potensi gangguan diminimalisir sebelum berdampak pada produktivitas Anda.',
+          img: 'uptime.png'
+        },
+        { 
+          title: 'Implementasi Cepat & Mandiri', 
+          desc: 'Waktu adalah uang dalam bisnis. Layanan VSAT SkyAccess memungkinkan instalasi perangkat lintas pulau hanya dalam hitungan hari. Tanpa perlu menunggu penarikan kabel fisik yang memakan waktu berbulan-bulan.',
+          img: 'deployment.png'
+        },
+        { 
+          title: 'Keamanan & Privasi Data', 
+          desc: 'Seluruh transmisi data melalui satelit kami dilindungi dengan enkripsi tingkat tinggi. Kami memberikan ketenangan pikiran bagi sektor perbankan dan pemerintahan yang memerlukan standar privasi data internasional.',
+          img: 'security.png'
+        },
+        { 
+          title: 'Dukungan Teknis Prioritas', 
+          desc: 'Anda tidak sendirian. Network Operations Center (NOC) kami beroperasi penuh 24/7 dengan tenaga ahli yang memiliki sertifikasi internasional, siap memberikan solusi instan untuk menjaga kelancaran koneksi Anda.',
+          img: 'support.png'
+        }
       ],
       ctaTitle: 'Konsultasikan Kebutuhan Infrastruktur Digital Anda',
       ctaBtn: 'Hubungi Specialist Kami (WhatsApp)'
@@ -168,10 +184,26 @@ const translations = {
       focusTitle: 'Strategic Solutions for Remote Areas',
       focusText: 'SkyAccess is more than just an internet provider. We are a strategic partner for businesses operating in areas with high infrastructure challenges. With VSAT technology, we ensure smooth operations ranging from mining and hospitality to government agencies throughout the archipelago.',
       factors: [
-        { title: 'High Reliability (Uptime)', desc: 'Guaranteed stable connection with competitive SLAs to support your crucial business applications.' },
-        { title: 'Fast & Independent Deployment', desc: 'Concise installation without dependence on land cables. Your business is online in days.' },
-        { title: 'Data Security & Privacy', desc: 'Encrypted satellite network ensuring your company data remains secure during transmission.' },
-        { title: 'Priority Technical Support', desc: 'Expert team on standby 24/7 providing quick solutions for every business challenge.' }
+        { 
+          title: 'High Reliability (Uptime)', 
+          desc: 'We guarantee your business operations keep running smoothly with signal availability up to 99.9%. With proactive technical support, any potential disruption is minimized before it impacts your productivity.',
+          img: 'uptime.png'
+        },
+        { 
+          title: 'Fast & Independent Deployment', 
+          desc: 'Time is money in business. SkyAccess VSAT services allow for device installations across islands in just a matter of days. No need to wait months for physical cable pulling.',
+          img: 'deployment.png'
+        },
+        { 
+          title: 'Data Security & Privacy', 
+          desc: 'All data transmissions through our satellites are protected with high-level encryption. We provide peace of mind for banking and government sectors that require international data privacy standards.',
+          img: 'security.png'
+        },
+        { 
+          title: 'Priority Technical Support', 
+          desc: 'You are not alone. Our Network Operations Center (NOC) operates 24/7 with international-certified experts, ready to provide instant solutions to ensure your connection remains smooth.',
+          img: 'support.png'
+        }
       ],
       ctaTitle: 'Consult Your Digital Infrastructure Needs',
       ctaBtn: 'Contact Our Specialist (WhatsApp)'

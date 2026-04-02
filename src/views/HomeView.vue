@@ -1,6 +1,7 @@
 <script setup>
 import Jumbotron from '../components/Jumbotron.vue';
-import { useI18n } from '../i18n';
+import Packages from '../components/Packages.vue';
+import { useI18n } from '../translations';
 const { t } = useI18n();
 </script>
 
@@ -35,6 +36,8 @@ const { t } = useI18n();
         </a>
       </div>
     </section>
+
+    <Packages />
   </div>
 </template>
 
@@ -44,7 +47,7 @@ const { t } = useI18n();
 }
 
 .info-section {
-  padding: 8rem 1.5rem;
+  padding: 8rem 1.5rem 4rem;
 }
 
 .section-header {

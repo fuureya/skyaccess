@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useI18n } from '../i18n';
+import { useI18n } from '../translations';
 
 const { t, toggleLocale, currentLocale } = useI18n();
 const isMenuOpen = ref(false);

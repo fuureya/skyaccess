@@ -50,6 +50,35 @@ const translations = {
       cta: 'Siap Menghubungkan Bisnis Anda di Mana Saja?',
       ctaBtn: 'Konsultasi Gratis'
     },
+    packages: {
+      badge: 'Paket Layanan',
+      title: 'Pilih Paket yang Sesuai dengan Kebutuhan Anda',
+      subtitle: 'Solusi internet satelit fleksibel untuk berbagai sektor dan skala bisnis.',
+      cta: 'Pesan Sekarang',
+      list: [
+        {
+          name: 'Paket Bronze',
+          speed: '5 Mbps',
+          price: 'Mulai dari Rp. X.XXX.XXX',
+          features: ['Unlimited Quota', 'Basic Support', 'Free Installation*', 'Home & Personal'],
+          isPopular: false
+        },
+        {
+          name: 'Paket Silver',
+          speed: '10 Mbps',
+          price: 'Mulai dari Rp. X.XXX.XXX',
+          features: ['Unlimited Quota', 'Priority Support', 'Public IP (Static)', 'Small & Medium Business'],
+          isPopular: true
+        },
+        {
+          name: 'Paket Gold',
+          speed: '20 Mbps',
+          price: 'Mulai dari Rp. X.XXX.XXX',
+          features: ['Dedicated Link', '24/7 Premium Support', 'SLA 99.5%', 'Enterprise & Government'],
+          isPopular: false
+        }
+      ]
+    },
     footer: {
       tagline: 'TV di setiap layar Anda dengan internet tercepat',
       links: 'Tautan',
@@ -102,6 +131,35 @@ const translations = {
       ],
       cta: 'Ready to Connect Your Business Anywhere?',
       ctaBtn: 'Free Consultation'
+    },
+    packages: {
+      badge: 'Service Packages',
+      title: 'Choose the Plan that Fits Your Needs',
+      subtitle: 'Flexible satellite internet solutions for various sectors and business scales.',
+      cta: 'Order Now',
+      list: [
+        {
+          name: 'Bronze Plan',
+          speed: '5 Mbps',
+          price: 'Starting from Rp. X.XXX.XXX',
+          features: ['Unlimited Quota', 'Basic Support', 'Free Installation*', 'Home & Personal'],
+          isPopular: false
+        },
+        {
+          name: 'Silver Plan',
+          speed: '10 Mbps',
+          price: 'Starting from Rp. X.XXX.XXX',
+          features: ['Unlimited Quota', 'Priority Support', 'Public IP (Static)', 'Small & Medium Business'],
+          isPopular: true
+        },
+        {
+          name: 'Gold Plan',
+          speed: '20 Mbps',
+          price: 'Starting from Rp. X.XXX.XXX',
+          features: ['Dedicated Link', '24/7 Premium Support', 'SLA 99.5%', 'Enterprise & Government'],
+          isPopular: false
+        }
+      ]
     },
     footer: {
       tagline: 'TV on your every screen with the fastest internet',

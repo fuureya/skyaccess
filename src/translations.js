@@ -62,6 +62,19 @@ const translations = {
       meetUs: 'Temui Kami',
       contact: 'Kontak',
       copyright: 'Hak Cipta © {year}. SKYACCESS. Seluruh Hak Cipta Dilindungi.'
+    },
+    testimonials: {
+      title: "Kepercayaan Pelanggan",
+      subtitle: "Telah dipercaya oleh berbagai instansi pemerintah dan bisnis terkemuka di tanah Papua.",
+      list: [
+        { name: "Dinas Kominfo Papua Barat", role: "Instansi Pemerintah", text: "Layanan SkyAccess luar biasa stabil, sangat membantu koordinasi digital kami di wilayah Papua Barat." },
+        { name: "Dinas Kominfo Papua Barat Daya", role: "Instansi Pemerintah", text: "Solusi VSAT yang sangat handal untuk mendukung infrastruktur komunikasi di provinsi baru kami." },
+        { name: "Hotel Swiss-Belinn Papua", role: "Sektor Perhotelan", text: "Terimakasih SkyAccess, tamu kami sangat puas dengan koneksi internet yang stabil dan cepat." },
+        { name: "Hotel Aston Papua", role: "Sektor Perhotelan", text: "Pelayanan teknis yang responsif dan kualitas koneksi yang konsisten di seluruh area hotel." },
+        { name: "Dinas Kejati Papua Barat", role: "Lembaga Hukum", text: "Sangat membantu dalam operasional digital kami yang memerlukan keamanan dan stabilitas tinggi." },
+        { name: "Diskominfo Raja Ampat", role: "Pemerintah Daerah", text: "Konektivitas di wilayah kepulauan bukan lagi hambatan berkat solusi satelit dari SkyAccess." },
+        { name: "Diskominfo Timika", role: "Pemerintah Daerah", text: "Kualitas sinyal yang sangat baik bahkan di cuaca ekstrem sekalipun. Sangat direkomendasikan." }
+      ]
     }
   },
   en: {
@@ -121,6 +134,19 @@ const translations = {
       meetUs: 'Meet Us',
       contact: 'Contact',
       copyright: 'Copyright © {year}. SKYACCESS. All Rights Reserved.'
+    },
+    testimonials: {
+      title: "Client Trust",
+      subtitle: "Trusted by government agencies and leading businesses across Papua.",
+      list: [
+        { name: "Dinas Kominfo Papua Barat", role: "Government Agency", text: "SkyAccess service is incredibly stable, greatly assisting our digital coordination in West Papua." },
+        { name: "Dinas Kominfo Papua Barat Daya", role: "Government Agency", text: "Highly reliable VSAT solution to support communication infrastructure in our new province." },
+        { name: "Hotel Swiss-Belinn Papua", role: "Hospitality Sector", text: "Thank you SkyAccess, our guests are very satisfied with the stable and fast internet connection." },
+        { name: "Hotel Aston Papua", role: "Hospitality Sector", text: "Responsive technical service and consistent connection quality throughout the hotel area." },
+        { name: "Dinas Kejati Papua Barat", role: "Legal Institution", text: "Greatly helpful for our digital operations that require high security and stability." },
+        { name: "Diskominfo Raja Ampat", role: "Local Government", text: "Connectivity in island regions is no longer a barrier thanks to SkyAccess satellite solutions." },
+        { name: "Diskominfo Timika", role: "Local Government", text: "Excellent signal quality even in extreme weather conditions. Highly recommended." }
+      ]
     }
   }
 };

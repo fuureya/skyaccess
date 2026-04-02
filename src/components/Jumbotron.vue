@@ -217,69 +217,81 @@ onUnmounted(() => {
   backdrop-filter: blur(10px);
 }
 
-.card-tag {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  background: rgba(14, 165, 233, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  display: block;
-  margin: 0 auto;
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+.dot:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.dot.active {
+  background: var(--primary);
+  width: 32px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+}
+
+/* Fade Animation */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
 }
 
 @media (max-width: 991px) {
-  .jumbotron-content {
+  .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 3rem;
+    padding-top: 2rem;
   }
-
-  .headline {
-    font-size: 3rem;
-  }
-
-  .subheadline {
-    margin: 0 auto 2.5rem;
-  }
-
-  .cta-group {
+  
+  .hero-btns {
     justify-content: center;
   }
-
+  
   .hero-stats {
     justify-content: center;
-    flex-wrap: wrap;
+  }
+  
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .hero-image-wrapper {
-    order: -1;
+  .slider-container {
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 576px) {
-  .headline {
+  .hero-title {
     font-size: 2.5rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .btn {
     width: 100%;
-    justify-content: center;
-  }
-
-  .cta-group {
-    flex-direction: column;
-    gap: 1rem;
   }
 }
 </style>

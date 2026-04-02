@@ -1,6 +1,7 @@
 <script setup>
 import Jumbotron from '../components/Jumbotron.vue';
 import Packages from '../components/Packages.vue';
+import Testimonials from '../components/Testimonials.vue';
 import { useI18n } from '../translations';
 const { t } = useI18n();
 </script>
@@ -36,6 +37,8 @@ const { t } = useI18n();
         </a>
       </div>
     </section>
+
+    <Testimonials />
 
     <Packages />
   </div>

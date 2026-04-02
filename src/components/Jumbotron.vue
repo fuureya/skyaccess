@@ -4,10 +4,14 @@ import { useI18n } from '../translations';
 const { t } = useI18n();
 
 const currentSlide = ref(0);
+const getImg = (name) => {
+  return new URL(`../assets/img/${name}`, import.meta.url).href;
+};
+
 const slides = [
-  { url: '/src/assets/img/hero-slide-1.png', alt: 'VSAT on Mountain' },
-  { url: '/src/assets/img/hero-slide-2.png', alt: 'VSAT for Communities' },
-  { url: '/src/assets/img/hero-slide-3.png', alt: 'Advanced VSAT Tech' }
+  { url: getImg('hero-slide-1.png'), alt: 'VSAT on Mountain' },
+  { url: getImg('hero-slide-2.png'), alt: 'VSAT for Communities' },
+  { url: getImg('hero-slide-3.png'), alt: 'Advanced VSAT Tech' }
 ];
 
 let timer = null;

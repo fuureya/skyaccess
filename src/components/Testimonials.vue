@@ -1,6 +1,10 @@
 <script setup>
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useI18n } from '../translations';
 const { t } = useI18n();
+
+const currentIndex = ref(0);
+const testimonialList = computed(() => t('testimonials.list') || []);
 
 const getIcon = (role) => {
   const r = role.toLowerCase();
@@ -9,6 +13,33 @@ const getIcon = (role) => {
   if (r.includes('hukum') || r.includes('legal')) return 'fas fa-scale-balanced';
   return 'fas fa-award';
 };
+
+let timer = null;
+const startAutoPlay = () => {
+  timer = setInterval(() => {
+    next();
+  }, 6000);
+};
+
+const next = () => {
+  currentIndex.value = (currentIndex.value + 1) % testimonialList.value.length;
+};
+
+const prev = () => {
+  currentIndex.value = (currentIndex.value - 1 + testimonialList.value.length) % testimonialList.value.length;
+};
+
+const goTo = (index) => {
+  currentIndex.value = index;
+};
+
+onMounted(() => {
+  startAutoPlay();
+});
+
+onUnmounted(() => {
+  if (timer) clearInterval(timer);
+});
 </script>
 
 <template>
@@ -20,37 +51,59 @@ const getIcon = (role) => {
         <p class="subtitle">{{ t('testimonials.subtitle') }}</p>
       </div>
 
-      <div class="testimonial-grid">
-        <div 
-          v-for="(item, index) in t('testimonials.list')" 
-          :key="index" 
-          class="testimonial-card glass"
-        >
-          <div class="card-header">
-            <div class="client-icon">
-              <i :class="getIcon(item.role)"></i>
-            </div>
-            <div class="client-info">
-              <h4 class="client-name">{{ item.name }}</h4>
-              <span class="client-role">{{ item.role }}</span>
+      <div class="slider-wrapper">
+        <div class="slider-container">
+          <div 
+            class="slider-track" 
+            :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
+          >
+            <div 
+              v-for="(item, index) in testimonialList" 
+              :key="index" 
+              class="slide"
+            >
+              <div class="testimonial-card glass">
+                <div class="card-header">
+                  <div class="client-icon">
+                    <i :class="getIcon(item.role)"></i>
+                  </div>
+                  <div class="client-info">
+                    <h4 class="client-name">{{ item.name }}</h4>
+                    <span class="client-role">{{ item.role }}</span>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  <i class="fas fa-quote-left quote-icon"></i>
+                  {{ item.text }}
+                </p>
+                <div class="card-footer">
+                  <div class="stars">
+                    <i class="fas fa-star" v-for="i in 5" :key="i"></i>
+                  </div>
+                  <span class="verified">
+                    <i class="fas fa-check-circle"></i> Terverifikasi
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-          <p class="testimonial-text">
-            <i class="fas fa-quote-left quote-icon"></i>
-            {{ item.text }}
-          </p>
-          <div class="card-footer">
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="verified">
-              <i class="fas fa-check-circle"></i> Terverifikasi
-            </span>
-          </div>
+        </div>
+
+        <button class="nav-btn prev" @click="prev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-btn next" @click="next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="slider-dots">
+          <span 
+            v-for="(_, index) in testimonialList" 
+            :key="index" 
+            :class="{ active: currentIndex === index }"
+            class="dot"
+            @click="goTo(index)"
+          ></span>
         </div>
       </div>
     </div>
@@ -60,7 +113,8 @@ const getIcon = (role) => {
 <style scoped>
 .testimonials {
   padding: 8rem 0;
-  background: radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+  background: radial-gradient(circle at 10% 90%, rgba(14, 165, 233, 0.03) 0%, transparent 50%);
+  overflow: hidden;
 }
 
 .section-header {
@@ -95,100 +149,166 @@ const getIcon = (role) => {
   line-height: 1.6;
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+/* Slider System */
+.slider-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.slider-container {
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+  flex: 0 0 100%;
+  padding: 1rem;
 }
 
 .testimonial-card {
-  padding: 2.5rem;
-  border-radius: 24px;
+  padding: 3rem;
+  border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s ease;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(14, 165, 233, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
 .card-header {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .client-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(14, 165, 233, 0.1) 100%);
-  border-radius: 16px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(14, 165, 233, 0.05) 100%);
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--primary);
 }
 
 .client-name {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .client-role {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--primary);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .testimonial-text {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.7;
+  font-size: 1.3rem;
+  color: #f8fafc;
+  line-height: 1.8;
   font-style: italic;
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .quote-icon {
   color: var(--primary);
-  opacity: 0.2;
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
+  opacity: 0.3;
+  font-size: 2rem;
+  margin-right: 1rem;
 }
 
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stars {
   color: #fbbf24;
-  font-size: 0.9rem;
+  font-size: 1rem;
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .verified {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #22c55e;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+}
+
+/* Nav Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-btn.prev { left: -70px; }
+.nav-btn.next { right: -70px; }
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 3rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.dot.active {
+  background: var(--primary);
+  width: 30px;
+  border-radius: 10px;
+}
+
+@media (max-width: 1100px) {
+  .nav-btn.prev { left: 10px; }
+  .nav-btn.next { right: 10px; }
 }
 
 @media (max-width: 768px) {
@@ -196,8 +316,16 @@ const getIcon = (role) => {
     font-size: 2.5rem;
   }
   
-  .testimonial-grid {
-    grid-template-columns: 1fr;
+  .testimonial-text {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-card {
+    padding: 2rem;
+  }
+
+  .nav-btn {
+    display: none;
   }
 }
 </style>
